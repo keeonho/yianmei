@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yianmei</title>
+<meta name="description" content="Yianmei: Chinese teens from Chengdu who love thrifting. Weaving the lost into something whole.">
+<meta name="theme-color" content="#f3f1ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23a3121c'/%3E%3Ctext x='16' y='23' font-size='18' text-anchor='middle' fill='%23fff' font-family='serif'%3E%E7%BB%87%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@500;700;800&family=Noto+Serif+SC:wght@600;900&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f1ee; --white:#fdfcfb; --red:#a3121c; --red2:#c7232d; --blush:#f3cfc6; --rose:#e8a69a; --cream:#f2ddb4; --ink:#2b1d1e; --mute:#7a6566;
+  --shadow:0 18px 40px rgba(80,30,30,.18);
+  --gutter:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);color:var(--ink);font-family:"Hanken Grotesk","Noto Serif SC",system-ui,sans-serif;font-weight:500;overflow-x:hidden;min-height:100dvh}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.ic{width:1em;height:1em;flex:none}
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- yianmei visual language (from the reference edit) ---------- */
+.zh{font-family:"Noto Serif SC",serif;font-weight:900;color:var(--red);letter-spacing:.32em}
+.script{font-family:"Pinyon Script",cursive;color:var(--cream);text-shadow:0 2px 10px rgba(120,60,40,.25)}
+.glow{font-family:"Hanken Grotesk",sans-serif;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:.98;
+  text-shadow:0 0 18px rgba(255,255,255,.85),0 0 40px rgba(255,255,255,.5),0 2px 12px rgba(90,40,40,.25)}
+.mono{font-family:"Courier Prime","Noto Serif SC",monospace}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;text-decoration:none;padding:14px 22px;font-weight:700;font-size:1.02rem;white-space:nowrap;
+  box-shadow:0 10px 24px rgba(163,18,28,.28);transition:translate .2s cubic-bezier(.16,1,.3,1),box-shadow .2s}
+.btn:hover{translate:0 -2px;box-shadow:0 14px 30px rgba(163,18,28,.34)}
+.btn:active{translate:0 2px}
+.btn:focus-visible,.tag:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.h2{font-family:"Pinyon Script",cursive;font-weight:400;color:var(--red);font-size:clamp(3.6rem,15vw,7.4rem);line-height:.9}
+.wmark{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:96;pointer-events:none;user-select:none;
+  font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:clamp(.82rem,3.3vw,1rem);line-height:1.15;text-align:right;color:var(--ink);opacity:.42;
+  text-shadow:0 0 6px rgba(255,255,255,.9),0 0 2px #fff}
+
+/* ---------- intro: the seal ---------- */
+#intro{position:fixed;inset:0;z-index:80;background:var(--bg);display:grid;place-items:center;align-content:center;gap:22px}
+.seal{width:96px;padding:12px 0;background:var(--red);color:#fff;display:grid;justify-items:center;gap:2px;font-family:"Noto Serif SC";font-weight:900;font-size:40px;line-height:1.05;
+  border-radius:6px;box-shadow:inset 0 0 0 4px var(--red),inset 0 0 0 6px rgba(255,255,255,.85);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='.6' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.9'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23r)'/%3E%3C/svg%3E") 0 0/120px 120px}
+#intro .script{font-size:clamp(4rem,18vw,6rem);color:var(--red);text-shadow:none;clip-path:inset(0 100% 0 0)}
+#intro .ink{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(163,18,28,.22),transparent 65%);scale:0}
+
+/* ---------- hero (poster) ---------- */
+#hero{position:relative;min-height:100dvh;overflow:hidden;display:grid}
+.poster-img{position:absolute;inset:0}
+.poster-img img{width:100%;height:100%;object-fit:cover;object-position:60% 20%;scale:1.08}
+.poster-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(243,241,238,.55),rgba(243,241,238,0) 55%),linear-gradient(0deg,rgba(43,29,30,.25),transparent 40%)}
+.hero-in{position:relative;z-index:2;padding:max(28px,env(safe-area-inset-top)) var(--gutter) 40px;display:grid;grid-template-rows:auto 1fr auto;min-height:100dvh}
+.hero-in .zh{font-size:clamp(1.25rem,6.2vw,2.6rem);letter-spacing:.28em}
+.words{align-self:center;display:grid;font-size:clamp(3.4rem,17vw,8.6rem);margin-top:24px}
+.words span{display:block;width:max-content}
+.vscript{position:absolute;right:max(10px,4vw);top:24%;z-index:2;display:grid;justify-items:center;font-size:clamp(3rem,13vw,6rem);line-height:.86}
+.hero-foot{display:flex;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:wrap}
+.place{display:inline-flex;align-items:center;gap:8px;background:rgba(253,252,251,.85);padding:8px 14px;font-weight:700;color:var(--red);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.poster-sharp{display:none}
+@media (min-width:900px){
+  .hero-in{padding:44px 6vw 48px}
+  .words{font-size:clamp(4rem,7.4vw,6.6rem)}
+  .poster-img img{filter:blur(28px) saturate(1.15);scale:1.25}
+  .poster-img::after{background:rgba(243,241,238,.12)}
+  .poster-sharp{display:block;position:absolute;z-index:1;right:12vw;top:9dvh;bottom:9dvh;aspect-ratio:3/4;background:var(--white);padding:12px 12px 48px;box-shadow:0 30px 60px rgba(80,30,30,.3);rotate:2deg}
+  .poster-sharp img{width:100%;height:100%;object-fit:cover}
+  .vscript{right:5vw}
+}
+
+/* ---------- about: the receipt ---------- */
+#about{position:relative;padding:110px var(--gutter) 90px;max-width:1120px;margin:0 auto;display:grid;gap:56px;align-items:center}
+.about-copy .zh{font-size:clamp(1.05rem,4.6vw,1.5rem);letter-spacing:.16em;margin:16px 0 18px;line-height:1.7}
+.about-copy p{font-size:clamp(1.25rem,5vw,1.7rem);line-height:1.35;max-width:24ch;font-weight:700}
+.about-copy p em{font-style:normal;color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--ink);padding:7px 13px;font-weight:700;font-size:.95rem}
+.chip .ic{font-size:20px;color:var(--red)}
+.receipt-wrap{position:relative;justify-self:center;width:min(86vw,360px)}
+.printer{height:26px;background:var(--ink);border-radius:8px 8px 3px 3px;position:relative;z-index:2;box-shadow:0 6px 0 #00000022}
+.printer::after{content:"";position:absolute;left:8%;right:8%;bottom:6px;height:4px;background:#000;border-radius:2px}
+.receipt{position:relative;margin:-6px 8% 0;background:var(--white);padding:26px 20px 30px;box-shadow:var(--shadow);color:var(--ink);font-family:"Courier Prime","Noto Serif SC",monospace;font-size:.98rem;line-height:1.55;
+  clip-path:inset(0 0 100% 0);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle at 50% 100%,#0000 6px,#000 6.5px) bottom/16px 12px repeat-x}
+.receipt h3{font-family:"Courier Prime";font-weight:700;text-align:center;font-size:1.15rem;letter-spacing:.08em}
+.receipt .c{text-align:center}
+.receipt hr{border:0;border-top:1.5px dashed var(--mute);margin:12px 0}
+.receipt .row{display:flex;justify-content:space-between;gap:10px}
+.receipt .tot{font-weight:700;font-size:1.12rem}
+.barcode{height:46px;margin:16px auto 6px;width:84%;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 7px,transparent 7px 9px,var(--ink) 9px 10px,transparent 10px 13px)}
+.stampmark{position:absolute;right:6%;bottom:22%;rotate:-14deg;border:3px solid var(--red);color:var(--red);padding:4px 10px;font-family:"Noto Serif SC";font-weight:900;font-size:1.3rem;letter-spacing:.2em;opacity:0}
+@media (min-width:900px){ #about{grid-template-columns:1.1fr 1fr} }
+
+/* ---------- the rack (members) ---------- */
+#rack{position:relative;height:100dvh;overflow:hidden;background:linear-gradient(180deg,var(--bg),#efe6e2)}
+.rack-head{position:absolute;left:var(--gutter);top:max(26px,5dvh);z-index:3}
+.rack-head .zh{display:block;font-size:.95rem;letter-spacing:.3em;margin-top:6px}
+.rail{position:absolute;left:0;top:30%;height:12px;background:linear-gradient(180deg,#e9e6e2,#9c958f 55%,#6f6964);border-radius:6px;box-shadow:0 6px 10px rgba(60,30,30,.25);will-change:transform}
+.track{position:absolute;left:0;top:30%;display:flex;gap:clamp(18px,4vw,34px);padding:0 30vw 0 max(var(--gutter),6vw);will-change:transform}
+.hanger{position:relative;flex:none;width:clamp(168px,46vw,210px);transform-origin:50% 0;margin-top:-26px}
+.hanger .hook{display:block;margin:0 auto;font-size:58px;color:#6f6964;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2))}
+.hanger .string{width:2px;height:28px;margin:-6px auto 0;background:#b9a69d}
+.tag{position:relative;display:block;width:100%;text-align:left;background:var(--white);color:var(--ink);padding:30px 16px 18px;box-shadow:var(--shadow);
+  clip-path:polygon(18% 0,82% 0,100% 9%,100% 100%,0 100%,0 9%)}
+.tag::before{content:"";position:absolute;left:50%;top:9px;width:12px;height:12px;translate:-50% 0;border-radius:50%;background:var(--bg);box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
+.tag.k{background:#f7e9e3} .tag.r{background:var(--red);color:#fff} .tag.r .zh2,.tag.r .handle{color:#fff} .tag.r .mean{color:#ffe1dc}
+.tag .ph{width:100%;aspect-ratio:1;overflow:hidden;margin-bottom:12px;background:#ddd}
+.tag .ph img{width:100%;height:100%;object-fit:cover}
+.tag .zh2{font-family:"Noto Serif SC";font-weight:900;color:var(--red);font-size:2.3rem;line-height:1;letter-spacing:.06em}
+.tag .py{font-family:"Pinyon Script";font-size:1.9rem;line-height:1;margin-top:4px}
+.tag .mean{font-family:"Courier Prime";font-style:italic;font-size:.9rem;color:var(--mute);margin-top:6px;line-height:1.25;min-height:2.5em}
+.tag .handle{display:block;font-family:"Courier Prime";font-weight:700;font-size:.95rem;margin-top:10px;padding-top:9px;border-top:1.5px dashed currentColor;word-break:break-all}
+.rack-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:max(18px,4dvh);display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime";font-size:.95rem;color:var(--mute)}
+.bar{flex:1;max-width:260px;height:3px;background:#dccfca;margin-left:14px;position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0;background:var(--red);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* ---------- haul (draggable polaroids) ---------- */
+#haul{position:relative;padding:100px var(--gutter) 80px;max-width:1200px;margin:0 auto}
+#haul .sub{font-family:"Courier Prime";color:var(--mute);margin-top:8px;display:flex;align-items:center;gap:8px}
+.cloth{position:relative;height:min(120vw,640px);margin-top:28px;background:
+  repeating-linear-gradient(0deg,rgba(163,18,28,.07) 0 22px,transparent 22px 44px),repeating-linear-gradient(90deg,rgba(163,18,28,.07) 0 22px,transparent 22px 44px),var(--blush);
+  box-shadow:inset 0 0 60px rgba(120,40,40,.15);overflow:hidden;touch-action:pan-y}
+.pol{position:absolute;width:clamp(120px,32vw,210px);background:var(--white);padding:9px 9px 34px;box-shadow:0 12px 26px rgba(80,30,30,.28);cursor:grab;touch-action:none}
+.pol:active{cursor:grabbing}
+.pol img{width:100%;aspect-ratio:4/5;object-fit:cover;pointer-events:none}
+.pol .tp{position:absolute;top:-10px;left:50%;width:64px;height:20px;translate:-50% 0;rotate:-4deg;background:rgba(242,221,180,.85)}
+
+/* ---------- outro ---------- */
+#outro{position:relative;min-height:90dvh;display:grid;place-items:center;align-content:center;text-align:center;padding:90px var(--gutter) 120px;overflow:hidden}
+#outro .zh{font-size:clamp(1.15rem,5.6vw,2.2rem);letter-spacing:.3em}
+#outro .script{color:var(--red);text-shadow:none;font-size:clamp(5rem,25vw,12rem);line-height:1;margin:6px 0}
+#outro .line{font-weight:800;font-size:clamp(1.3rem,5.4vw,2.2rem);letter-spacing:-.02em}
+.stitch{position:absolute;left:0;width:100%;height:120px;pointer-events:none}
+.stitch.t{top:6%} .stitch.b{bottom:6%}
+.stitch path{fill:none;stroke:var(--red);stroke-width:3;stroke-linecap:round}
+
+@media (prefers-reduced-motion:reduce){
+  #intro .script{clip-path:none}
+  .receipt{clip-path:none}
+  .stampmark{opacity:1}
+  #rack{height:auto;overflow-x:auto}
+  .track,.rail{position:relative;top:auto}
+  .track{padding-top:120px;padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-arrows-out-cardinal" viewBox="0 0 256 256" fill="currentColor"><path d="M90.34,61.66a8,8,0,0,1,0-11.32l32-32a8,8,0,0,1,11.32,0l32,32a8,8,0,0,1-11.32,11.32L136,43.31V96a8,8,0,0,1-16,0V43.31L101.66,61.66A8,8,0,0,1,90.34,61.66Zm64,132.68L136,212.69V160a8,8,0,0,0-16,0v52.69l-18.34-18.35a8,8,0,0,0-11.32,11.32l32,32a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Zm83.32-72-32-32a8,8,0,0,0-11.32,11.32L212.69,120H160a8,8,0,0,0,0,16h52.69l-18.35,18.34a8,8,0,0,0,11.32,11.32l32-32A8,8,0,0,0,237.66,122.34ZM43.31,136H96a8,8,0,0,0,0-16H43.31l18.35-18.34A8,8,0,0,0,50.34,90.34l-32,32a8,8,0,0,0,0,11.32l32,32a8,8,0,0,0,11.32-11.32Z"/></symbol><symbol id="i-bowl-steam" viewBox="0 0 256 256" fill="currentColor"><path d="M224,112H32a8,8,0,0,0-8,8,104.35,104.35,0,0,0,56,92.28V216a16,16,0,0,0,16,16h64a16,16,0,0,0,16-16v-3.72A104.35,104.35,0,0,0,232,120,8,8,0,0,0,224,112Zm-59.34,88a8,8,0,0,0-4.66,7.27V216H96v-8.71A8,8,0,0,0,91.34,200a88.29,88.29,0,0,1-51-72H215.63A88.29,88.29,0,0,1,164.66,200ZM81.77,55c5.35-6.66,6.67-11.16,6.12-13.14-.42-1.49-2.41-2.26-2.43-2.26A8,8,0,0,1,88,24a8.11,8.11,0,0,1,2.38.36c1,.31,9.91,3.33,12.79,12.76,2.46,8.07-.55,17.45-8.94,27.89-5.35,6.66-6.67,11.16-6.12,13.14.42,1.49,2.37,2.24,2.39,2.25A8,8,0,0,1,88,96a8.11,8.11,0,0,1-2.38-.36c-1-.31-9.91-3.33-12.79-12.76C70.37,74.81,73.38,65.43,81.77,55Zm40,0c5.35-6.66,6.67-11.16,6.12-13.14-.42-1.49-2.41-2.26-2.43-2.26A8,8,0,0,1,128,24a8.11,8.11,0,0,1,2.38.36c1,.31,9.91,3.33,12.79,12.76,2.46,8.07-.55,17.45-8.94,27.89-5.35,6.66-6.67,11.16-6.12,13.14.42,1.49,2.37,2.24,2.39,2.25A8,8,0,0,1,128,96a8.11,8.11,0,0,1-2.38-.36c-1-.31-9.91-3.33-12.79-12.76C110.37,74.81,113.38,65.43,121.77,55Zm40,0c5.35-6.66,6.67-11.16,6.12-13.14-.42-1.49-2.41-2.26-2.43-2.26A8,8,0,0,1,168,24a8.11,8.11,0,0,1,2.38.36c1,.31,9.91,3.33,12.79,12.76,2.46,8.07-.55,17.45-8.94,27.89-5.35,6.66-6.67,11.16-6.12,13.14.42,1.49,2.37,2.24,2.39,2.25A8,8,0,0,1,168,96a8.11,8.11,0,0,1-2.38-.36c-1-.31-9.91-3.33-12.79-12.76C150.37,74.81,153.38,65.43,161.77,55Z"/></symbol><symbol id="i-coat-hanger" viewBox="0 0 256 256" fill="currentColor"><path d="M241.57,171.2,141.33,96l23.46-17.6A8,8,0,0,0,168,72a40,40,0,1,0-80,0,8,8,0,0,0,16,0,24,24,0,0,1,47.69-3.78L123.34,89.49l-.28.21L14.43,171.2A16,16,0,0,0,24,200H232a16,16,0,0,0,9.6-28.8ZM232,184H24l104-78,104,78Z"/></symbol><symbol id="i-flower-lotus" viewBox="0 0 256 256" fill="currentColor"><path d="M245.83,121.63a15.53,15.53,0,0,0-9.52-7.33,73.51,73.51,0,0,0-22.17-2.22c4-19.85,1-35.55-2.06-44.86a16.15,16.15,0,0,0-18.79-10.88,85.53,85.53,0,0,0-28.55,12.12,94.58,94.58,0,0,0-27.11-33.25,16.05,16.05,0,0,0-19.26,0A94.48,94.48,0,0,0,91.26,68.46,85.53,85.53,0,0,0,62.71,56.34,16.15,16.15,0,0,0,43.92,67.22c-3,9.31-6,25-2.06,44.86a73.51,73.51,0,0,0-22.17,2.22,15.53,15.53,0,0,0-9.52,7.33,16,16,0,0,0-1.6,12.27c3.39,12.57,13.8,36.48,45.33,55.32S113.13,208,128.05,208s42.67,0,74-18.78c31.53-18.84,41.94-42.75,45.33-55.32A16,16,0,0,0,245.83,121.63ZM59.14,72.14a.2.2,0,0,1,.23-.15A70.43,70.43,0,0,1,85.18,83.66,118.65,118.65,0,0,0,80,119.17c0,18.74,3.77,34,9.11,46.28A123.59,123.59,0,0,1,69.57,140C51.55,108.62,55.3,84,59.14,72.14Zm3,103.35C35.47,159.57,26.82,140.05,24,129.7a59.82,59.82,0,0,1,22.5-1.17,129.08,129.08,0,0,0,9.15,19.41,142.28,142.28,0,0,0,34,39.56A114.92,114.92,0,0,1,62.1,175.49ZM128,190.4c-9.33-6.94-32-28.23-32-71.23C96,76.7,118.38,55.24,128,48c9.62,7.26,32,28.72,32,71.19C160,162.17,137.33,183.46,128,190.4ZM170.82,83.66A70.43,70.43,0,0,1,196.63,72a.2.2,0,0,1,.23.15C200.7,84,204.45,108.62,186.43,140a123.32,123.32,0,0,1-19.54,25.48c5.34-12.26,9.11-27.54,9.11-46.28A118.65,118.65,0,0,0,170.82,83.66ZM232,129.72c-2.77,10.25-11.4,29.81-38.09,45.77a114.92,114.92,0,0,1-27.55,12,142.28,142.28,0,0,0,34-39.56,129.08,129.08,0,0,0,9.15-19.41A59.69,59.69,0,0,1,232,129.71Z"/></symbol><symbol id="i-hand-grabbing" viewBox="0 0 256 256" fill="currentColor"><path d="M188,80a27.79,27.79,0,0,0-13.36,3.4,28,28,0,0,0-46.64-11A28,28,0,0,0,80,92v20H68a28,28,0,0,0-28,28v12a88,88,0,0,0,176,0V108A28,28,0,0,0,188,80Zm12,72a72,72,0,0,1-144,0V140a12,12,0,0,1,12-12H80v24a8,8,0,0,0,16,0V92a12,12,0,0,1,24,0v28a8,8,0,0,0,16,0V92a12,12,0,0,1,24,0v28a8,8,0,0,0,16,0V108a12,12,0,0,1,24,0Z"/></symbol><symbol id="i-heart" viewBox="0 0 256 256" fill="currentColor"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"/></symbol><symbol id="i-map-pin" viewBox="0 0 256 256" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol><symbol id="i-moon" viewBox="0 0 256 256" fill="currentColor"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></symbol><symbol id="i-receipt" viewBox="0 0 256 256" fill="currentColor"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"/></symbol><symbol id="i-sparkle" viewBox="0 0 256 256" fill="currentColor"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></symbol><symbol id="i-star" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></symbol><symbol id="i-t-shirt" viewBox="0 0 256 256" fill="currentColor"><path d="M247.59,61.22,195.83,33A8,8,0,0,0,192,32H160a8,8,0,0,0-8,8,24,24,0,0,1-48,0,8,8,0,0,0-8-8H64a8,8,0,0,0-3.84,1L8.41,61.22A15.76,15.76,0,0,0,1.82,82.48l19.27,36.81A16.37,16.37,0,0,0,35.67,128H56v80a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V128h20.34a16.37,16.37,0,0,0,14.58-8.71l19.27-36.81A15.76,15.76,0,0,0,247.59,61.22ZM35.67,112a.62.62,0,0,1-.41-.13L16.09,75.26,56,53.48V112ZM184,208H72V48h16.8a40,40,0,0,0,78.38,0H184Zm36.75-96.14a.55.55,0,0,1-.41.14H200V53.48l39.92,21.78Z"/></symbol><symbol id="i-tag" viewBox="0 0 256 256" fill="currentColor"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"/></symbol></svg>
+<div class="wmark" aria-hidden="true">carter ganteng<br>@foocl</div>
+
+<div id="intro" aria-hidden="true">
+  <div class="ink"></div>
+  <div class="seal" id="seal"><span>编</span><span>织</span></div>
+  <div class="script" id="introScript">Yianmei</div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="poster-img"><img src="img/ian1.webp" alt="Jeong Ian, the Yianmei muse"></div>
+    <div class="poster-sharp" aria-hidden="true"><img src="img/ian1.webp" alt=""></div>
+    <div class="vscript script" aria-hidden="true"><span>Y</span><span>i</span><span>a</span><span>n</span><span>m</span><span>e</span><span>i</span></div>
+    <div class="hero-in">
+      <p class="zh h-zh" lang="zh">将遗失的编织成完整</p>
+      <h1 class="words glow" aria-label="weaving the lost into something whole"><span>weaving</span><span>the</span><span>lost</span><span>into</span><span>something</span><span>whole</span></h1>
+      <div class="hero-foot">
+        <span class="place h-in"><svg class="ic"><use href="#i-map-pin"/></svg>成都 Chengdu</span>
+        <a class="btn h-in" href="#rack" data-go="#rack"><svg class="ic"><use href="#i-coat-hanger"/></svg>meet the members</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="about-h">
+    <div class="about-copy rv">
+      <h2 class="h2" id="about-h">who we are</h2>
+      <p class="zh" lang="zh">我们是来自成都的少年，爱好是淘二手。</p>
+      <p>We're just Chinese teens from <em>Chengdu</em>, and our favorite hobby is <em>thrifting</em>.</p>
+      <div class="chips">
+        <span class="chip"><svg class="ic"><use href="#i-map-pin"/></svg>Chengdu, Sichuan</span>
+        <span class="chip"><svg class="ic"><use href="#i-coat-hanger"/></svg>thrifting</span>
+        <span class="chip"><svg class="ic"><use href="#i-flower-lotus"/></svg>muse: Jeong Ian (H2H)</span>
+      </div>
+    </div>
+    <div class="receipt-wrap">
+      <div class="printer"></div>
+      <div class="receipt" id="receipt">
+        <h3>YIANMEI THRIFT</h3>
+        <p class="c">成都 · Chengdu</p>
+        <hr>
+        <div class="row"><span>ITEM</span><span>QTY</span></div>
+        <hr>
+        <div class="row"><span>chengdu teens</span><span>26</span></div>
+        <div class="row"><span>hobby: thrifting</span><span>1</span></div>
+        <div class="row"><span>muse: jeong ian</span><span>1</span></div>
+        <div class="row"><span>lost things, woven</span><span>∞</span></div>
+        <hr>
+        <div class="row tot"><span>TOTAL</span><span>PRICELESS</span></div>
+        <hr>
+        <p class="c">thank you, come again</p>
+        <div class="barcode"></div>
+        <div class="stampmark" id="paid" lang="zh">完整</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE RACK -->
+  <section id="rack" aria-labelledby="rack-h">
+    <div class="rack-head">
+      <h2 class="h2" id="rack-h" style="font-size:clamp(3rem,12vw,5.6rem)">the rack</h2>
+      <span class="zh" lang="zh">衣架上的每一个名字</span>
+    </div>
+    <div class="rail" id="rail"></div>
+    <div class="track" id="track"><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Yueyin 月吟, moonlit melody, @soleurn"><div class="ph"><img src="img/ian1.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">月吟</div><div class="py">Yueyin</div><div class="mean">moonlit melody</div><span class="handle">@soleurn</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag k" type="button" aria-label="Lanyue 兰月, orchid moon, @trimck"><div class="ph"><img src="img/ian2.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">兰月</div><div class="py">Lanyue</div><div class="mean">orchid moon</div><span class="handle">@trimck</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Yunxi 云汐, cloud + evening tide, @fulltimebnnuy"><div class="ph"><img src="img/ian3.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">云汐</div><div class="py">Yunxi</div><div class="mean">cloud + evening tide</div><span class="handle">@fulltimebnnuy</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Lianyi 莲衣, lotus robe, @jpeongian"><div class="ph"><img src="img/ian4.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">莲衣</div><div class="py">Lianyi</div><div class="mean">lotus robe</div><span class="handle">@jpeongian</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag r" type="button" aria-label="Yuelin 月琳, moon + jade, @plusshydoll"><div class="ph"><img src="img/ian5.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">月琳</div><div class="py">Yuelin</div><div class="mean">moon + jade</div><span class="handle">@plusshydoll</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Meixuan 美萱, beautiful + daylily, @tjeongiian"><div class="ph"><img src="img/ian6.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">美萱</div><div class="py">Meixuan</div><div class="mean">beautiful + daylily</div><span class="handle">@tjeongiian</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Shuyin 淑音, graceful + melody, @jeongleels"><div class="ph"><img src="img/ian7.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">淑音</div><div class="py">Shuyin</div><div class="mean">graceful + melody</div><span class="handle">@jeongleels</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag k" type="button" aria-label="Yueya 月雅, moon + elegance, @jmungian"><div class="ph"><img src="img/ian8.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">月雅</div><div class="py">Yueya</div><div class="mean">moon + elegance</div><span class="handle">@jmungian</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Yurou 玉柔, jade + softness, @ttooth"><div class="ph"><img src="img/ian9.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">玉柔</div><div class="py">Yurou</div><div class="mean">jade + softness</div><span class="handle">@ttooth</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag r" type="button" aria-label="Qingyue 清月, clear moon, @jeongIeeakn"><div class="ph"><img src="img/ian1.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">清月</div><div class="py">Qingyue</div><div class="mean">clear moon</div><span class="handle">@jeongIeeakn</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag k" type="button" aria-label="Lianyu 莲玉, lotus + jade, @yianzhaeng"><div class="ph"><img src="img/ian2.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">莲玉</div><div class="py">Lianyu</div><div class="mean">lotus + jade</div><span class="handle">@yianzhaeng</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Meilan 美兰, beautiful orchid, @leeanjungi"><div class="ph"><img src="img/ian3.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">美兰</div><div class="py">Meilan</div><div class="mean">beautiful orchid</div><span class="handle">@leeanjungi</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Yuyan 玉嫣, jade + lovely smile, @jsorai"><div class="ph"><img src="img/ian4.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">玉嫣</div><div class="py">Yuyan</div><div class="mean">jade + lovely smile</div><span class="handle">@jsorai</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag k" type="button" aria-label="Jinglan 静兰, quiet orchid, @ppatiens"><div class="ph"><img src="img/ian5.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">静兰</div><div class="py">Jinglan</div><div class="mean">quiet orchid</div><span class="handle">@ppatiens</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag r" type="button" aria-label="Huayin 花音, flower melody, @salzvje"><div class="ph"><img src="img/ian6.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">花音</div><div class="py">Huayin</div><div class="mean">flower melody</div><span class="handle">@salzvje</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Yuehua 月华, moonlight, @jeonbian"><div class="ph"><img src="img/ian7.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">月华</div><div class="py">Yuehua</div><div class="mean">moonlight</div><span class="handle">@jeonbian</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag k" type="button" aria-label="Yunmei 云眉, cloud-like brows, @nevoila"><div class="ph"><img src="img/ian8.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">云眉</div><div class="py">Yunmei</div><div class="mean">cloud-like brows</div><span class="handle">@nevoila</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Lianxin 莲心, lotus heart, @lipxloss"><div class="ph"><img src="img/ian9.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">莲心</div><div class="py">Lianxin</div><div class="mean">lotus heart</div><span class="handle">@lipxloss</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Yulan 玉兰, magnolia, @haircip"><div class="ph"><img src="img/ian1.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">玉兰</div><div class="py">Yulan</div><div class="mean">magnolia</div><span class="handle">@haircip</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag r" type="button" aria-label="Yuxian 玉娴, jade + refined/graceful, @mousrje"><div class="ph"><img src="img/ian2.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">玉娴</div><div class="py">Yuxian</div><div class="mean">jade + refined/graceful</div><span class="handle">@mousrje</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Yunxiu 云秀, cloud + graceful beauty, @Cruelsd"><div class="ph"><img src="img/ian3.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">云秀</div><div class="py">Yunxiu</div><div class="mean">cloud + graceful beauty</div><span class="handle">@Cruelsd</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Lianhua 莲华, lotus blossom, @litUtle"><div class="ph"><img src="img/ian4.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">莲华</div><div class="py">Lianhua</div><div class="mean">lotus blossom</div><span class="handle">@litUtle</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag k" type="button" aria-label="Molan 墨兰, ink orchid, @yiawnjung"><div class="ph"><img src="img/ian5.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">墨兰</div><div class="py">Molan</div><div class="mean">ink orchid</div><span class="handle">@yiawnjung</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag" type="button" aria-label="Lanxue 兰雪, orchid snow, @adoredbyher"><div class="ph"><img src="img/ian6.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">兰雪</div><div class="py">Lanxue</div><div class="mean">orchid snow</div><span class="handle">@adoredbyher</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag r" type="button" aria-label="Wanyi 婉仪, graceful bearing, @wvhere"><div class="ph"><img src="img/ian7.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">婉仪</div><div class="py">Wanyi</div><div class="mean">graceful bearing</div><span class="handle">@wvhere</span></button></div><div class="hanger"><svg class="ic hook"><use href="#i-coat-hanger"/></svg><div class="string"></div><button class="tag k" type="button" aria-label="Yunrou 云柔, soft as clouds, @shincy"><div class="ph"><img src="img/ian8.webp" alt="" loading="lazy"></div><div class="zh2" lang="zh">云柔</div><div class="py">Yunrou</div><div class="mean">soft as clouds</div><span class="handle">@shincy</span></button></div></div>
+    <div class="rack-foot"><span id="rackCount">26 members</span><span class="bar"><i id="rackBar"></i></span></div>
+  </section>
+
+  <!-- HAUL -->
+  <section id="haul" aria-labelledby="haul-h">
+    <h2 class="h2" id="haul-h">today's haul</h2>
+    <p class="sub"><svg class="ic"><use href="#i-hand-grabbing"/></svg>drag the photos around</p>
+    <div class="cloth" id="cloth"><div class="pol" data-x="4" data-y="6" data-r="-8"><span class="tp"></span><img src="img/ian2.webp" alt=""></div><div class="pol" data-x="38" data-y="3" data-r="5"><span class="tp"></span><img src="img/ian4.webp" alt=""></div><div class="pol" data-x="68" data-y="9" data-r="-4"><span class="tp"></span><img src="img/ian8.webp" alt=""></div><div class="pol" data-x="10" data-y="46" data-r="6"><span class="tp"></span><img src="img/ian5.webp" alt=""></div><div class="pol" data-x="44" data-y="40" data-r="-6"><span class="tp"></span><img src="img/poster.webp" alt=""></div><div class="pol" data-x="72" data-y="50" data-r="8"><span class="tp"></span><img src="img/ian6.webp" alt=""></div><div class="pol" data-x="26" data-y="22" data-r="3"><span class="tp"></span><img src="img/ian3.webp" alt=""></div><div class="pol" data-x="56" data-y="24" data-r="-10"><span class="tp"></span><img src="img/ian7.webp" alt=""></div></div>
+  </section>
+
+  <!-- OUTRO -->
+  <section id="outro" aria-labelledby="outro-h">
+    <svg class="stitch t" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path id="st1" pathLength="1" d="M0 70 C 200 20, 380 110, 600 60 S 980 20, 1200 70"/></svg>
+    <p class="zh rv" lang="zh">将遗失的编织成完整</p>
+    <h2 class="script rv" id="outro-h">Yianmei</h2>
+    <p class="line rv">weaving the lost into something whole</p>
+    <svg class="stitch b" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path id="st2" pathLength="1" d="M0 50 C 240 100, 420 10, 640 60 S 1000 100, 1200 40"/></svg>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger, Draggable);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const rnd = (a, b) => a + Math.random() * (b - a);
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+/* ---------- smooth scroll ---------- */
+let lenis = null;
+if (!reduce) {
+  lenis = new Lenis({ lerp: 0.09 });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.stop();
+}
+$$("[data-go]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); lenis ? lenis.scrollTo(a.dataset.go, { duration: 1.6 }) : $(a.dataset.go).scrollIntoView(); }));
+
+/* ---------- intro: the seal stamps down, the name writes itself ---------- */
+function heroIn() {
+  const tl = gsap.timeline();
+  if (reduce) return tl;
+  tl.from(".poster-img", { opacity: 0, scale: 1.12, duration: 1.6, ease: "expo.out" })
+    .from(".poster-sharp", { opacity: 0, y: 60, rotate: 8, duration: 1.2, ease: "expo.out" }, 0.2)
+    .from(".h-zh", { opacity: 0, letterSpacing: "1em", duration: 1.2, ease: "expo.out" }, 0.1)
+    // each word comes into focus, like the soft glow text in the edit
+    .from(".words span", { opacity: 0, filter: "blur(18px)", y: 30, duration: 1, ease: "expo.out", stagger: 0.09 }, 0.25)
+    .from(".vscript span", { opacity: 0, y: -20, duration: 0.7, ease: "expo.out", stagger: 0.07 }, 0.5)
+    .from(".h-in", { opacity: 0, y: 20, duration: 0.7, ease: "expo.out", stagger: 0.08 }, 0.9);
+  return tl;
+}
+const loaded = new Promise(r => (document.readyState === "complete" ? r() : addEventListener("load", r)));
+Promise.race([loaded, new Promise(r => setTimeout(r, 5000))]).then(() => {
+  const done = () => { $("#intro").remove(); lenis && lenis.start(); ScrollTrigger.refresh(); };
+  if (reduce) { done(); heroIn(); return; }
+  gsap.timeline({ onComplete: done })
+    .fromTo("#seal", { scale: 2.6, opacity: 0, rotate: -18 }, { scale: 1, opacity: 1, rotate: -4, duration: 0.45, ease: "power4.in" })
+    .to("#intro .ink", { scale: 1, duration: 0.5, ease: "expo.out" })
+    .to("#intro", { x: 3, duration: 0.05, yoyo: true, repeat: 3 }, "<")
+    .to("#introScript", { clipPath: "inset(0 0% 0 0)", duration: 1, ease: "power2.inOut" }, "-=0.2")
+    .to("#intro", { clipPath: "inset(0 0 100% 0)", duration: 0.9, ease: "expo.inOut" }, "+=0.35")
+    .add(heroIn(), "-=0.5");
+});
+
+if (!reduce) {
+  gsap.to(".poster-img", { yPercent: 12, ease: "none", scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true } });
+  gsap.to(".words", { yPercent: -18, opacity: 0.2, ease: "none", scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true } });
+  $$(".rv").forEach(el => gsap.from(el, { opacity: 0, y: 40, filter: "blur(8px)", duration: 1, ease: "expo.out",
+    scrollTrigger: { trigger: el, start: "top 86%", toggleActions: "play none none reverse" } }));
+
+  /* receipt prints out as you scroll, then gets stamped */
+  gsap.to("#receipt", { clipPath: "inset(0 0 0% 0)", ease: "none", scrollTrigger: { trigger: ".receipt-wrap", start: "top 80%", end: "bottom 60%", scrub: 0.6 } });
+  gsap.fromTo("#paid", { opacity: 0, scale: 2.2 }, { opacity: 0.9, scale: 1, duration: 0.35, ease: "power4.in",
+    scrollTrigger: { trigger: ".receipt-wrap", start: "bottom 62%", toggleActions: "play none none reverse" } });
+}
+
+/* ---------- the rack: scroll slides the rail, tags swing with your speed ---------- */
+if (!reduce) {
+  const track = $("#track"), rail = $("#rail");
+  const tags = $$(".hanger");
+  const swing = tags.map(t => gsap.quickTo(t, "rotation", { duration: 1.1, ease: "elastic.out(1, 0.25)" }));
+  const dist = () => track.scrollWidth - innerWidth;
+  rail.style.width = "100%";
+  let settle;
+  gsap.to(track, {
+    x: () => -dist(), ease: "none",
+    scrollTrigger: {
+      trigger: "#rack", start: "top top", end: () => "+=" + dist() * 1.1, pin: true, scrub: 0.8, invalidateOnRefresh: true,
+      onUpdate: s => {
+        $("#rackBar").style.setProperty("--p", s.progress.toFixed(3));
+        const r = clamp(s.getVelocity() / 140, -16, 16); // hangers lag behind the rail, like real clothes
+        swing.forEach((q, i) => q(r * (0.75 + (i % 3) * 0.15)));
+        clearTimeout(settle); settle = setTimeout(() => swing.forEach(q => q(0)), 90);
+      },
+    },
+  });
+  tags.forEach((t, i) => {
+    const nudge = () => { gsap.killTweensOf(t, "rotation"); swing[i](0); gsap.fromTo(t, { rotation: rnd(8, 14) * (Math.random() < 0.5 ? -1 : 1) }, { rotation: 0, duration: 1.6, ease: "elastic.out(1, 0.2)" }); };
+    t.addEventListener("pointerenter", e => e.pointerType === "mouse" && nudge());
+    t.querySelector(".tag").addEventListener("click", nudge);
+  });
+}
+
+/* ---------- haul: drag the polaroids around ---------- */
+const cloth = $("#cloth");
+$$(".pol").forEach((p, i) => {
+  gsap.set(p, { left: p.dataset.x + "%", top: p.dataset.y + "%", rotation: +p.dataset.r });
+  Draggable.create(p, { bounds: cloth, zIndexBoost: true, inertia: false,
+    onPress() { gsap.to(this.target, { scale: 1.06, rotation: 0, boxShadow: "0 22px 40px rgba(80,30,30,.35)", duration: 0.25 }); },
+    onRelease() { gsap.to(this.target, { scale: 1, rotation: rnd(-9, 9), boxShadow: "0 12px 26px rgba(80,30,30,.28)", duration: 0.6, ease: "elastic.out(1, 0.4)" }); } });
+});
+if (!reduce) ScrollTrigger.create({ trigger: cloth, start: "top 75%", once: true,
+  onEnter: () => gsap.from(".pol", { y: -260, opacity: 0, rotation: () => rnd(-40, 40), duration: 1, ease: "bounce.out", stagger: 0.08 }) });
+
+/* ---------- outro: red thread stitches across ---------- */
+if (!reduce) ["#st1", "#st2"].forEach((id, i) => {
+  const p = $(id); p.style.strokeDasharray = "1"; p.style.strokeDashoffset = "1";
+  gsap.to(p, { strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: "#outro", start: "top 85%", end: "center 50%", scrub: 0.6 } });
+});
+document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
+</script>
+</body>
+</html>
